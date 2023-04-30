@@ -3,6 +3,10 @@ var resultado;
 var jogador1;
 var computadorEscolha;
 
+// Variáveis para armazenar pontos
+var pontosJogador = 0;
+var pontosOponente = 0;
+
 // Função para escolha do jogador e exibir a imagem correspondente
 function jogadorEscolha(opcao) {
   jogador1 = opcao;
@@ -34,6 +38,7 @@ function jogar() {
       break;
   }
   determinarResultado();
+  exibirPlacar(); // Adicionado para atualizar o placar
   exibirResultado();
   return computadorEscolha;
 }
@@ -48,8 +53,10 @@ function determinarResultado() {
       (jogador1 === "tesoura" && computadorEscolha === "papel")
     ) {
       resultado = "Você ganhou!";
+      pontosJogador++;
     } else {
       resultado = "Você perdeu!";
+      pontosOponente++;
     }
 }
 
@@ -58,12 +65,20 @@ function exibirResultado() {
   document.getElementById("resultado").innerHTML = resultado;
 }
 
+// Função para atualizar o placar na tela
+function exibirPlacar() {
+  document.getElementById("pontos-jogador").innerHTML = pontosJogador;
+  document.getElementById("pontos-oponente").innerHTML = pontosOponente;
+}
+
 //Função para resetar o jogo
 function reset() {
   // redefinir as variáveis do jogo
   jogador1 = undefined;
   computadorEscolha = undefined;
   resultado = undefined;
+  pontosJogador = 0;
+  pontosOponente = 0;
   
   // redefinir as imagens dos jogadores
   document.getElementById("maojogador").setAttribute("src", "imagens/pedra-jogador.png");
@@ -73,7 +88,11 @@ function reset() {
   
   // limpar o resultado exibido na tela
   document.getElementById("resultado").innerHTML = "";
+
+  // atualizar o placar na tela
+  exibirPlacar();
 }
+
 
 // Chamar as funções em ordem para executar o jogo
 jogadorEscolha();
