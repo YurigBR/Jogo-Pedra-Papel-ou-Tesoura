@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Pedra, Papel ou Tesoura</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Pedra, Papel ou Tesoura</h1>
+
+    <div class="mao">
+        <img src="imagens/pedra-jogador.png" alt="mãojogador" id="maojogador">
+        <img src="imagens/pedra.png" alt="mãooponete" id="maooponente">
+    </div>
+    <div class="options">
+        <button id="Pedra" onclick="jogadorEscolha('pedra')">Pedra</button>
+        <button id="Papel" onclick="jogadorEscolha('papel')">Papel</button>
+        <button id="Tesoura" onclick="jogadorEscolha('tesoura')">Tesoura</button>
+    </div>
+
+    <div class="options">
+        <button id="jogar" onclick="jogar()">Jogar</button>
+        <button id="reset" onclick="reset()">Reset</button>
+    </div>
+  
+    <div id="result">
+    <p id="resultado">resultado é:</p>
+    </div>
+  
+    <script src="script.js"></script>
 </body>
 </html>
